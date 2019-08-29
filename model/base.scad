@@ -1,4 +1,4 @@
-// Version: 0.3
+// Version: 0.4
 
 // Horizontal wall
 difference() {
@@ -19,10 +19,10 @@ difference() {
         cube([10,28,12]);
     
     // Creating opening for right servo
-    translate([0,7,12])
+    translate([0,7-3,12])
      cube([10,23,22]);
     
     // Creating opening for left servo
-    translate([0,50,12])
+    translate([0,50+3,12])
      cube([10,23,22]);
 }
