@@ -1,3 +1,5 @@
+// Version: 0.1
+
 // Horizontal wall
 difference() {
     // Creating the base 
@@ -8,11 +10,10 @@ difference() {
         cube([50,30,2]);
 }
 
-
 // Vertical wall
 difference() {
     // Creating the vertical block
-    cube([10, 80, 40]);
+    cube([10, 80, 24]);
     // Cutting an opening for stuck trezor
     translate([0,30,0]) 
         cube([10,20,10]);
@@ -25,4 +26,3 @@ difference() {
     translate([0,50,12])
      cube([10,23,12]);
 }
-
