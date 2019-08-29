@@ -1,4 +1,4 @@
-// Version: 0.4
+// Version: 0.5
 
 // Horizontal wall
 difference() {
@@ -8,7 +8,7 @@ difference() {
     // Cutting a hole for trezor to sit in
     translate([0,25,2])
         cube([65,30,10]);
-}
+ }
 
 // Vertical wall
 difference() {
@@ -25,4 +25,28 @@ difference() {
     // Creating opening for left servo
     translate([0,50+3,12])
      cube([10,23,22]);
+
+    // Holes
+    translate([5,2,20])
+      rotate([0,90,0])
+        cylinder(40,1);
+
+    // Holes
+    translate([5,2+27,20])
+      rotate([0,90,0])
+        cylinder(40,1);
+
+    // Holes
+    translate([5,80-29,20])
+      rotate([0,90,0])
+        cylinder(40,1);
+
+   // Holes
+    translate([5,80-2,20])
+      rotate([0,90,0])
+        cylinder(40,1);
 }
+
+// Creating the blocker block
+translate([0,85,0])
+  cube([29, 6,10]);
