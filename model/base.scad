@@ -1,4 +1,4 @@
-// Version: 0.5
+// Version: 0.6
 
 // Horizontal wall
 difference() {
@@ -47,6 +47,11 @@ difference() {
         cylinder(40,1);
 }
 
+// Creating stopper
+translate([0,25,0])
+  cube([5, 6,10]);
+
+
 // Creating the blocker block
 translate([0,85,0])
-  cube([29, 6,10]);
+  cube([28, 6,10]);
