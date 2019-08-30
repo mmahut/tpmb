@@ -1,10 +1,10 @@
 
 #include <Servo.h>
 
-#define right_unpressed 60
+#define right_unpressed 79
 #define right_pressed 0
 #define left_unpressed 0
-#define left_pressed 60
+#define left_pressed 79
 
 
 String command;
@@ -60,7 +60,7 @@ void loop() {
         else if(command.equals("all press")){
           Serial.println("Pressing all buttons.");
           servo_right.write(right_pressed);
-					servo_left.write(left_pressed);
+          servo_left.write(left_pressed);
         }
         else if(command.equals("all unpress")){
           Serial.println("Unpressing all buttons.");
