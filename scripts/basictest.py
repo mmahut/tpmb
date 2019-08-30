@@ -28,40 +28,31 @@ def wait(seconds):
     print("*** Waiting for {} seconds...".format(seconds));
     time.sleep(seconds);
 
-def update_firmware(ser, version):
-    if "http" in version:
-        unofficial = True;
-        trezorctlcmd = "trezorctl firmware-update -s -u {} &".format(version);
-    else:
-        unofficial = False;
-        trezorctlcmd = "trezorctl firmware-update -v {} &".format(version);
+def basic_test(ser):
     trezor_poweroff();
-    if "1.8" in version:
-        touch(ser, "left", "press");
-    else:
-        touch(ser, "all", "press");
-    wait(2);
     trezor_poweron();
+    os.system("trezorctl ping -b TPMBping &");
     wait(2);
-    touch(ser, "all", "unpress");
-    print("*** Updating the fireware to {}...".format(version));
-    os.system(trezorctlcmd);
-    wait(3);
     touch(ser, "right", "click");
-    wait(20);
-    if unofficial: touch(ser, "right", "click");
+    wait(5)
+    os.system("trezorctl wipe-device &");
+    wait(2);
+    touch(ser, "right", "click");
     wait(5);
-    trezor_poweroff();
-    trezor_poweron();
-    if unofficial: touch(ser, "right", "click");
-    if unofficial: wait(5);
-    if unofficial: touch(ser, "right", "click");
+    os.system("trezorctl reset-device -l tpmb -s &");
+    wait(2);
+    touch(ser, "right", "click");
     wait(5);
-    os.system("trezorctl get-features|grep version");
+    os.system("trezorctl get_address --coin Bitcoin --script-type address --address \"m/44'/0'/0'/0/0\" -d &");
+    wait(2);
+    touch(ser, "right", "click");
+    wait(2);
+
+
 
 def main():
     ser = serial.Serial("/dev/ttyACM1", 9600)
-    update_firmware(ser, sys.argv[1]);
+    basic_test(ser);
 
 if __name__ == "__main__":
     main()
