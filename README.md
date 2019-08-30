@@ -1,4 +1,6 @@
-# Trezor, press my buttons.
+# Trezor (one), press my buttons.
+
+A simple hardware testing drone for Trezor One.
 
 ![](demo.gif)
 
@@ -30,3 +32,4 @@ To build this simple bot, we are using:
 * Stress testing (try to round robbing a standard test for few hundres times to test the servo capacity)
 * Integrate the arduino board box into the model
 * Figure out docker forwaring of device files for GitLab CI
+* Add Trezor T support
