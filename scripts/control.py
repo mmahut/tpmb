@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-
 # This is just a dirty playground, do not use.
+# It will be refactored over time.
+
 import os
 import sys
 import serial
@@ -30,19 +31,24 @@ def wait(seconds):
 def update_firmware(ser, version):
     if "http" in version:
         unofficial = True;
-        trezorctlcmd = "trezorctl firmware-update -s -u {} >/dev/null &".format(version);
+        trezorctlcmd = "trezorctl firmware-update -s -u {} &".format(version);
     else:
         unofficial = False;
-        trezorctlcmd = "trezorctl firmware-update -v {} >/dev/null &".format(version);
+        trezorctlcmd = "trezorctl firmware-update -v {} &".format(version);
     trezor_poweroff();
-    touch(ser, "left", "press");
+    if "1.8" in version:
+        touch(ser, "left", "press");
+    else:
+        touch(ser, "all", "press");
+    wait(2);
     trezor_poweron();
-    touch(ser, "left", "unpress");
+    wait(2);
+    touch(ser, "all", "unpress");
     print("*** Updating the fireware to {}...".format(version));
     os.system(trezorctlcmd);
     wait(3);
     touch(ser, "right", "click");
-    wait(30);
+    wait(20);
     if unofficial: touch(ser, "right", "click");
     wait(5);
     trezor_poweroff();
@@ -51,10 +57,10 @@ def update_firmware(ser, version):
     if unofficial: wait(5);
     if unofficial: touch(ser, "right", "click");
     wait(5);
-    os.system("trezorctl get-features");
+    os.system("trezorctl get-features|grep version");
 
 def main():
-    ser = serial.Serial("/dev/ttyACM1", 9600)
+    ser = serial.Serial("/dev/ttyACM0", 9600)
     update_firmware(ser, sys.argv[1]);
 
 if __name__ == "__main__":
