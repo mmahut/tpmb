@@ -1,5 +1,7 @@
 # Trezor, press my buttons.
 
+![](demo.gif)
+
 ## Hardware
 
 To build this simple bot, we are using:
