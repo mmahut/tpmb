@@ -1,4 +1,4 @@
-// Version: 0.6
+// Version: 0.7
 
 // Horizontal wall
 difference() {
@@ -13,38 +13,42 @@ difference() {
 // Vertical wall
 difference() {
     // Creating the vertical block
-    cube([10, 80, 28]);
+    cube([10, 80, 98]);
     // Cutting an opening for stuck trezor
     translate([0,26,-2])
-        cube([10,28,12]);
+     cube([10,28,12]);
     
     // Creating opening for right servo
     translate([0,7-3,12])
-     cube([10,23,22]);
+     cube([10,23,92]);
+    translate([0,0,40])
+     cube([10,23,92]);
     
     // Creating opening for left servo
     translate([0,50+3,12])
-     cube([10,23,22]);
+     cube([10,23,92]);
+   translate([0,50+8,40])
+     cube([10,23,92]);
 
     // Holes
     translate([5,2,20])
       rotate([0,90,0])
-        cylinder(40,1);
+        cylinder(40,1.5);
 
     // Holes
     translate([5,2+27,20])
       rotate([0,90,0])
-        cylinder(40,1);
+        cylinder(40,1.5);
 
     // Holes
     translate([5,80-29,20])
       rotate([0,90,0])
-        cylinder(40,1);
+        cylinder(40,1.1);
 
    // Holes
     translate([5,80-2,20])
       rotate([0,90,0])
-        cylinder(40,1);
+        cylinder(40,1.1);
 }
 
 // Creating stopper
