@@ -29,7 +29,6 @@ To build this simple bot, we are using:
 * Add webcam support (model support)
   * ``mp4`` recordings as artifacts 
   * Recording of the CI test over the recording of the webcam with opacity
-* Stress testing (try to round robbing a standard test for few hundres times to test the servo capacity)
 * Integrate the arduino board box into the model
 * Figure out docker forwaring of device files for GitLab CI
 * Add Trezor T support
