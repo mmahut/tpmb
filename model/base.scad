@@ -1,4 +1,4 @@
-// Version: 0.7
+// Version: 0.8
 
 // Horizontal wall
 difference() {
@@ -33,22 +33,22 @@ difference() {
     // Holes
     translate([5,2,20])
       rotate([0,90,0])
-        cylinder(40,1.5);
+        cylinder(40,1);
 
     // Holes
     translate([5,2+27,20])
       rotate([0,90,0])
-        cylinder(40,1.5);
+        cylinder(40,1);
 
     // Holes
     translate([5,80-29,20])
       rotate([0,90,0])
-        cylinder(40,1.1);
+        cylinder(40,1);
 
    // Holes
     translate([5,80-2,20])
       rotate([0,90,0])
-        cylinder(40,1.1);
+        cylinder(40,1);
 }
 
 // Creating stopper
