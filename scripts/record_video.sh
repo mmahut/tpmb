@@ -5,11 +5,12 @@ if [ $# -ne 2 ]
 fi
 
 OUTPUTFILE=video_$1_$(date +%s).mp4
+FONTFILE=$(ls /nix/store/*dejavu-fonts*/share/fonts/truetype/DejaVuSans-Bold.ttf|head -1)
 
 if [ "$2" == "start" ]; then
   echo "[software/video] Starting record to $OUTPUTFILE"
   ffmpeg -loglevel panic -f oss -f video4linux2 -i /dev/video0 \
-    -vf "drawtext=fontfile=/nix/store/z32n1b8r06v5py3higzs2rww5dq4s58z-dejavu-fonts-2.37/share/fonts/truetype/DejaVuSans-Bold.ttf: \
+    -vf "drawtext=fontfile=$FONTFILE: \
     text='$1 | %{localtime} | %{pts}': x=(w-tw)/2: y=h-(2*lh): fontcolor=white: box=1: boxcolor=0x00000000@1: fontsize=15" $OUTPUTFILE &
   export VPID=$!
 elif [ "$2" == "stop" ]; then
