@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S python3 -u
 # This is just a dirty playground, do not use.
 # It will be refactored over time.
 
