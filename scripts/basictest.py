@@ -45,6 +45,8 @@ def now():
 def basic_test(ser):
     trezor_poweroff();
     trezor_poweron();
+    wait(2)
+    touch(ser, "right", "click");
     wait(5);
     print("[software/trezorctl] ping -b TPMBping");
     os.system("trezorctl ping -b TPMBping &");
