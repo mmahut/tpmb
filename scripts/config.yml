@@ -1,3 +1,3 @@
-usb_location: 1-9.4
+usb_location: 3-1.4
 usb_port: 3
-arduino_serial: /dev/ttyACM1
+arduino_serial: /dev/ttyACM0
