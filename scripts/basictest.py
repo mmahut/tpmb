@@ -45,22 +45,27 @@ def now():
 def basic_test(ser):
     trezor_poweroff();
     trezor_poweron();
+    print("[software/trezorctl] ping -b TPMBping");
     os.system("trezorctl ping -b TPMBping &");
-    wait(2);
+    wait(5);
     touch(ser, "right", "click");
     wait(5)
+    print("[software/trezorctl] wipe-device");
     os.system("trezorctl wipe-device &");
-    wait(2);
+    wait(5);
     touch(ser, "right", "click");
     wait(5);
+    print("[software/trezorctl] reset-device");
     os.system("trezorctl reset-device -l tpmb -s &");
-    wait(2);
+    wait(5);
     touch(ser, "right", "click");
     wait(5);
+    print("[software/trezorctl] get_address --coin Bitcoin --script-type address --address \"m/44'/0'/0'/0/0\" -d");
     os.system("trezorctl get_address --coin Bitcoin --script-type address --address \"m/44'/0'/0'/0/0\" -d &");
-    wait(2);
+    wait(5);
     touch(ser, "right", "click");
     wait(2);
+    print("Basic test is done.");
 
 
 
