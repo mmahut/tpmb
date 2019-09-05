@@ -6,27 +6,41 @@ import os
 import sys
 import serial
 import time
+import yaml
+import datetime
 
-uhub_loction = "1-9";
-uhub_port = "1";
+
+with open("config.yml", 'r') as ymlfile:
+    cfg = yaml.safe_load(ymlfile)
+
+uhub_loction = cfg['usb_location'];
+uhub_port = cfg['usb_port'];
+arduino_serial = cfg['arduino_serial'];
 
 def trezor_poweroff():
-    print("*** Turning power off...");
+    now();
+    print("[hardware/usb] Turning power off...");
     os.system(("uhubctl -l {} -p {} -r 100 -a off > /dev/null").format(uhub_loction, uhub_port));
     wait(3)
 
 def trezor_poweron():
-    print("*** Turning power on...");
+    now();
+    print("[hardware/usb] Turning power on...");
     os.system(("uhubctl -l {} -p {} -a on > /dev/null").format(uhub_loction, uhub_port));
     wait(3)
 
 def touch(ser, location, action):
-    print("*** Touching the {} button by {}...".format(location, action));
+    now();
+    print("[hardware/trezor] Touching the {} button by {}...".format(location, action));
     ser.write(("{} {}\n".format(location, action)).encode())
 
 def wait(seconds):
-    print("*** Waiting for {} seconds...".format(seconds));
+    now();
+    print("[software]  Waiting for {} seconds...".format(seconds));
     time.sleep(seconds);
+
+def now():
+    print("\n[timestamp] {}".format(datetime.datetime.now()));
 
 def basic_test(ser):
     trezor_poweroff();
@@ -51,7 +65,7 @@ def basic_test(ser):
 
 
 def main():
-    ser = serial.Serial("/dev/ttyACM1", 9600)
+    ser = serial.Serial(arduino_serial, 9600)
     basic_test(ser);
 
 if __name__ == "__main__":
