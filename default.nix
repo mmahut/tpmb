@@ -12,5 +12,5 @@ in
 
 stdenv.mkDerivation rec {
   name = "tpmb";
-  buildInputs = [ uhubctl arduino pythonModules ];
+  buildInputs = [ uhubctl arduino pythonModules ffmpeg ];
 }
