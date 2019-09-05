@@ -45,6 +45,9 @@ def update_firmware(ser, version):
     if "http" in version:
         unofficial = True;
         trezorctlcmd = "trezorctl firmware-update -s -u {} &".format(version);
+    elif "bin" in version:
+        unofficial = True;
+        trezorctlcmd = "trezorctl firmware-update -s -f {} &".format(version);
     else:
         unofficial = False;
         trezorctlcmd = "trezorctl firmware-update -v {} &".format(version);
