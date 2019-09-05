@@ -7,8 +7,8 @@ import sys
 import serial
 import time
 
-uhub_loction = "1-9";
-uhub_port = "1";
+uhub_loction = "1-9.4";
+uhub_port = "3";
 
 def trezor_poweroff():
     print("*** Turning power off...");
