@@ -66,7 +66,7 @@ def update_firmware(ser, version):
     touch(ser, "right", "click");
     wait(20);
     if unofficial: touch(ser, "right", "click");
-    wait(5);
+    wait(10);
     trezor_poweroff();
     trezor_poweron();
     if unofficial: touch(ser, "right", "click");
