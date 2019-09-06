@@ -11,6 +11,6 @@ let
 in
 
 stdenv.mkDerivation rec {
-  name = "tpmb";
-  buildInputs = [ uhubctl arduino pythonModules ffmpeg ];
+  name = "tpmb-scripts";
+  buildInputs = [ uhubctl pythonModules ffmpeg ];
 }
