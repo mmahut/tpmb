@@ -16,4 +16,5 @@ if [ "$2" == "start" ]; then
 elif [ "$2" == "stop" ]; then
   echo "[software/video] Stopping the recording of $OUTPUTFILE"
   pkill ffmpeg
+  sync
 fi
